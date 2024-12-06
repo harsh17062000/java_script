@@ -1,0 +1,25 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.form {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 200px;
+}
+.form input {
+    width: 200px;
+    height: 7vh;
+
+}
+.form button{
+    width: 200px;
+    height: 7vh;
+ 
+}
+#input{
+    display: grid;
+    grid-template-columns: auto;
+}

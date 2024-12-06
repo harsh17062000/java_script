@@ -1,0 +1,20 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 6vh;
+    background-color: lavender;
+    box-shadow: 4px 4px 5px gray;
+}
+#list ul{
+    display: flex;
+    list-style-type: none;
+}
+#list ul li{
+    margin-right: 40px;
+    margin-left: 30px;
+}
