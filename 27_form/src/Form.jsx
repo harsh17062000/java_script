@@ -10,7 +10,7 @@ const Frm = () =>
         city:''
     })
 
-    function input(event)
+    function input(event) 
     {
         const {name,value} = event.target;
         setinput({
