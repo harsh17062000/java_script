@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Frm from './Form'
 import Arr from './Array'
+import Filter from './Array_object'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -11,8 +12,8 @@ function App() {
   return (
     <>
       <Frm />
-      <Arr />
-
+      {/* <Arr />
+      <Filter /> */}
     </>
   )
 }

@@ -1,19 +1,17 @@
-import { useState } from "react"
-import Login from './Login'
+import { useEffect, useState } from "react"
 
-const Frm = () =>
+const Login = () =>
 {
-
     const [inputvalue,setinput] = useState({
-        username:'',
-        age:'',
-        contact:'',
-        city:''
-    })
+            username:'',
+            age:'',
+            contact:'',
+            city:''
+        })
+        
+        let [udata, setudata] = useState(null)
 
-    const [ status, setstatus ] = useState(false)
-
-    function input(event) 
+        function input(event) 
     {
         const {name,value} = event.target;
         setinput({
@@ -25,26 +23,18 @@ const Frm = () =>
     function finalsubmit(event)
     {
         event.preventDefault();
-        console.log(inputvalue)
-
-        if(inputvalue.username == "" || inputvalue.age == "" || inputvalue.age == "" || inputvalue.contact == "" || inputvalue.city == '')
-        {
-            alert("fill the form")
-        }
-        else{
-            localStorage.setItem("userdata", JSON.stringify(inputvalue))
-            setstatus(true)
-        }
+        if()
     }
 
-    if(status)
-    {
-        return <Login />
-    }
+    useEffect(()=>{
+        let logindata = JSON.parse(localStorage.getItem('userdata'))
+        setudata(logindata)
+    },[])
 
     return(
         <>
-        <form onSubmit={finalsubmit}>
+           <h1>login</h1>
+           <form onSubmit={finalsubmit}>
             <label htmlFor="">Name</label>
             <input type="text" name="username" value={inputvalue.username} onChange={input} /><br /><br />
             <label htmlFor="">Age</label>
@@ -55,8 +45,9 @@ const Frm = () =>
             <input type="text" name="city" value={inputvalue.city} onChange={input} /><br /><br />
             <input type="submit" />
         </form>
+        
         </>
     )
 }
 
-export default Frm
+export default Login
