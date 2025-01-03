@@ -20,11 +20,22 @@ const Login = () =>
         })
     }
 
-    function finalsubmit(event)
-    {
+    function finalsubmit(event) {
         event.preventDefault();
-        if()
-    }
+      
+        if (
+          
+          inputvalue.username === udata.username &&
+          inputvalue.age === udata.age &&
+          inputvalue.contact === udata.contact &&
+          inputvalue.city === udata.city
+        ) {
+          alert("Login successful");
+        } else {
+          alert("Not matched");
+        }
+      }
+      
 
     useEffect(()=>{
         let logindata = JSON.parse(localStorage.getItem('userdata'))
