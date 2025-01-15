@@ -1,5 +1,10 @@
 #image-box img 
 {
-    height: 90vh;
+    height: 92vh;
     width: 100%;
+}
+
+#contact
+{
+    height: 90vh;
 }

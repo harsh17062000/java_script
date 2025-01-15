@@ -5,6 +5,7 @@ import About from "./About"
 import Login from "./Login"
 import Signup from "./Signup"
 import Navbar from "./Navbar"
+import Contact from "./Contact"
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
       <Routes>
         <Route index element = { <Home />} />
         <Route path = "/about" element = { <About />} />
+        <Route path = "/contact" element = { <Contact />} />
         <Route path = "/signup" element = { <Signup />} />
         <Route path = "/login" element = { <Login />} />
       </Routes>

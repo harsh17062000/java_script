@@ -3,6 +3,9 @@ import './Home.css'
 function Home() {
     return (
         <>
+        <body className="body2">
+            
+        
             <div id="carouselExampleCaptions" className="carousel slide">
                 <div className="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
@@ -40,11 +43,11 @@ function Home() {
                     <span className="carousel-control-next-icon" aria-hidden="true"></span>
                     <span className="visually-hidden">Next</span>
                 </button>
-            </div>
+            </div> <br /><br />
 
             {/* -------------about------------------------------------------------------------------- */}
 
-            <div className="bg-light py-5">
+            <div id='contact' className="bg-light py-5">
       <div className="container">
         <div className="row align-items-center">
 
@@ -74,7 +77,74 @@ function Home() {
         </div>
       </div>
     </div>
-        </>
+
+    {/* -------------------------contact------------------------------- */}
+
+    <div
+      className="py-5 text-white"
+      style={{
+        backgroundColor:"lightblue", 
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      <div className="container">
+        
+        <div className="row justify-content-center">
+          <div className="col-lg-8 text-center">
+            <h1 className="fw-bold mb-4">Contact Us</h1>
+            <p className="lead">
+              Have questions or need help? We’re here for you! Fill out the form below or reach out to us directly, and we’ll get back to you as soon as possible.
+            </p>
+          </div>
+        </div>
+
+        <div className="row justify-content-center mt-4">
+          <div className="col-lg-6">
+            <form>
+              <div className="mb-3">
+                <label htmlFor="name" className="form-label">Your Name</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="name"
+                  placeholder="Enter your name"
+                  required
+                />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="email" className="form-label">Email Address</label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="email"
+                  placeholder="Enter your email"
+                  required
+                />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="message" className="form-label">Your Message</label>
+                <textarea
+                  className="form-control"
+                  id="message"
+                  rows="5"
+                  placeholder="Write your message here"
+                  required
+                ></textarea>
+              </div>
+              <div className="text-center">
+                <button type="submit" className="btn btn-primary">
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    </body>
+    </>
     )
 }
 
