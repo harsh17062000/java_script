@@ -1,8 +1,80 @@
+
 import React, { useState } from "react";
 import "./Signup.css";
+import { useEffect } from "react";
+
 
 function Signup() {
+  const [ status, setstatus ] = useState(false)
+  const [ udata, setudata ] = useState(null)
   const [isRightPanelActive, setIsRightPanelActive] = useState(false);
+
+  const [loginfrminput, setLogininput] = useState({
+    username:"",
+    email:"",
+    password:""
+  })
+
+  const [signupfrminput,setsignupfrminput] = useState({
+    username:"",
+    email:"",
+    password:""
+})
+
+// ------------------------------------------------sign up -------------------------
+
+  const inpvaluesignup = (e) =>
+  {
+    let {name,value} = e.target;
+    setsignupfrminput({...signupfrminput,[name]:value})
+  }
+
+  const submitsignup = (e) =>
+  {
+    e.preventDefault()
+    
+    if(signupfrminput.username === "" || signupfrminput.email === "" || signupfrminput.password === "")
+        {
+            alert("fill the form")
+        }
+        else
+        {
+            localStorage.setItem("userdata", JSON.stringify(signupfrminput))
+            setstatus(true)
+        }
+  }
+
+  if (status) 
+    {
+      return(
+        alert("hero")
+      )
+    }
+
+
+    // --------------------------------login------------------------------------
+    const inputvaluelogin = (e) =>
+    {
+      const  {name,value} = e.target;
+      setLogininput({...loginfrminput, [name]:value})
+    }
+
+    const submitlogin = (e) =>
+    {
+        e.preventDefault()
+
+       if ( loginfrminput.email === udata.email && loginfrminput.password === udata.password )
+        {
+            alert("login succesfull")
+        }
+        else
+        {
+            alert("invalid password")
+        } 
+
+    }
+    
+
 
   const handleSignUpClick = () => {
     setIsRightPanelActive(true);
@@ -12,37 +84,42 @@ function Signup() {
     setIsRightPanelActive(false);
   };
 
+  useEffect(()=>{
+          let logindata = JSON.parse(localStorage.getItem('userdata'))
+          setudata(logindata)
+      },[])
+
   return (
     <div className="hero">
       <div className={`container ${isRightPanelActive ? "right-panal-active" : ""}`} id="main">
-        {/* Sign-Up Form */}
+        {/*--------------------- Sign-Up Form -------------------------*/}
         <div className="sign-up">
-          <form>
+          <form onSubmit={submitsignup}>
             <h1>Create Account</h1>
             <div className="social"></div>
             <p>Or use your email for registration</p>
-            <input type="text" name="username" placeholder="username" required />
-            <input type="email" name="email" placeholder="Email" required />
-            <input type="password" name="password" placeholder="password" required />
-            <button>Sign Up</button>
+            <input type="text" value={signupfrminput.username} name="username" placeholder="username" onChange={inpvaluesignup} required />
+            <input type="email" value={signupfrminput.email} name="email" placeholder="Email" onChange={inpvaluesignup} required />
+            <input type="password" value={signupfrminput.password} name="password" placeholder="password" onChange={inpvaluesignup} required />
+            <button type="submit">Sign Up</button>
           </form>
         </div>
 
-        {/* Sign-In Form */}
+        {/*----------- Sign-In Form-------------------- */}
         <div className="sign-in">
-          <form>
+          <form onSubmit={submitlogin}>
             <h1>Sign In</h1>
             <div className="social"></div>
             <p>Or use your Account</p>
-            <input type="email" name="email" placeholder="Email" required />
+            <input type="email" name="email" placeholder="Email" onChange={inputvaluelogin} required />
             <br />
-            <input type="password" name="password" placeholder="password" required />
+            <input type="password" name="password" placeholder="password" onChange={inputvaluelogin} required />
             <a href="#">Forget your Password?</a>
-            <button>Sign In</button>
+            <button type="submit">Sign In</button>
           </form>
         </div>
 
-        {/* Overlay */}
+        {/* ---------------Overlay - ----------------------------------- */}
         <div className="overlay-container">
           <div className="overlay">
             <div className="overlay-left">
