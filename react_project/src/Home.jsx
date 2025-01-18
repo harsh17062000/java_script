@@ -1,10 +1,10 @@
 import React from 'react'
 import './Home.css'
+import MetroReservation from './Reservation'
+import Book from './Book'
 function Home() {
     return (
         <>
-        <body className="body2">
-            
         
             <div id="carouselExampleCaptions" className="carousel slide">
                 <div className="carousel-indicators">
@@ -78,7 +78,8 @@ function Home() {
       </div>
     </div>
 
-    {/* -------------------------contact------------------------------- */}
+    <Book />
+      {/* -------------------------contact------------------------------- */}
 
     <div
       className="py-5 text-white"
@@ -143,7 +144,6 @@ function Home() {
         </div>
       </div>
     </div>
-    </body>
     </>
     )
 }

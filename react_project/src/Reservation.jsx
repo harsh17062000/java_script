@@ -1,104 +1,65 @@
-import React, { useState } from "react";
-import "./Reservation.css"; // Create a CSS file to style the section.
+import React, { useEffect, useState } from "react";
+import "./Reservation.css";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function MetroReservation() {
   const [reservationDetails, setReservationDetails] = useState({
     train: "",
     date: "",
-    passengers: 1,
+    passengers:"",
+    from:"",
+    to:""
+
   });
 
-  const [successMessage, setSuccessMessage] = useState("");
+  let nav = useNavigate();
+  function navv(){
+    nav('/dashboard')
+  }
 
-  // List of available metro trains (static for now; can be fetched dynamically)
-  const metroTrains = ["Red Line", "Blue Line", "Green Line", "Yellow Line"];
-
-  const handleInputChange = (e) => {
+  const hinput = (e) => {
     const { name, value } = e.target;
     setReservationDetails({ ...reservationDetails, [name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const { train, date, passengers } = reservationDetails;
-
-    if (!train || !date || passengers < 1) {
-      alert("Please fill out all fields correctly!");
-      return;
-    }
-
-    // Save reservation (for now, just show success message)
-    setSuccessMessage(
-      `Reservation successful! Train: ${train}, Date: ${date}, Passengers: ${passengers}`
-    );
-
-    // Clear form
-    setReservationDetails({
-      train: "",
-      date: "",
-      passengers: 1,
-    });
+    axios.post("http://localhost:3000/Metro",reservationDetails).then(res=>alert("Ticket Booked"))
   };
 
+  useEffect(()=>{
+    axios.get("http://localhost:3000/Metro")
+  },[])
+
+
   return (
+    <>
     <div className="reservation-section">
       <h1>Metro Train Reservation</h1>
 
-      {successMessage && <p className="success-message">{successMessage}</p>}
+    <form onSubmit={handleSubmit}>
 
-      <form onSubmit={handleSubmit}>
-        {/* Select Train */}
-        <div className="form-group">
-          <label htmlFor="train">Select Train:</label>
-          <select
-            id="train"
-            name="train"
-            value={reservationDetails.train}
-            onChange={handleInputChange}
-            required
-          >
-            <option value="">-- Select a Train --</option>
-            {metroTrains.map((train, index) => (
-              <option key={index} value={train}>
-                {train}
-              </option>
-            ))}
-          </select>
-        </div>
+      <label htmlFor="">Train No.</label><br />
+      <input type="text" name="train" value={reservationDetails.train} onChange={hinput} /> <br /><br />
 
-        {/* Select Date */}
-        <div className="form-group">
-          <label htmlFor="date">Travel Date:</label>
-          <input
-            type="date"
-            id="date"
-            name="date"
-            value={reservationDetails.date}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
+      <label htmlFor="">date</label><br />
+      <input type="date" name="date" value={reservationDetails.date} onChange={hinput}  /> <br /><br />
 
-        {/* Number of Passengers */}
-        <div className="form-group">
-          <label htmlFor="passengers">Number of Passengers:</label>
-          <input
-            type="number"
-            id="passengers"
-            name="passengers"
-            min="1"
-            value={reservationDetails.passengers}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
+      <label htmlFor="">From</label><br />
+      <input type="text" name="from" value={reservationDetails.from} onChange={hinput}  /> <br /><br />
 
-        {/* Submit Button */}
-        <button type="submit">Reserve Now</button>
-      </form>
+      <label htmlFor="">To</label><br />
+      <input type="text" name="to" value={reservationDetails.to} onChange={hinput}  /> <br /><br />
+
+      <label htmlFor="">Passengers</label><br />
+      <input type="text" name="passengers" value={reservationDetails.passengers} onChange={hinput}  /> <br /><br />
+
+      <input  onClick={navv} type="submit" />
+    </form>
     </div>
-  );
+    </>
+  )
 }
 
 export default MetroReservation;

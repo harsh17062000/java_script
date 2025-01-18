@@ -4,6 +4,8 @@ import { useEffect, useState } from "react"
 const Axios = () =>
 {
     let[apidata,setApidata] = useState([])
+    let[editdata,setEditdata] = useState({})
+    let[frmvisible,setfrmvisible] = useState(false)
     let [frminp , setFrminp] = useState({
         name:"",
         age:"",
@@ -27,6 +29,12 @@ const Axios = () =>
             axios.delete(`http://localhost:3000/student/${id}`)
             .then(re=>alert("deleted"))
         }
+
+    function hinput(e)
+    {
+        let {name,value} = e.target;
+        setEditdata({...editdata,[name]:value})
+    }
         
     useEffect(()=>{
 
@@ -64,12 +72,14 @@ const Axios = () =>
                             <td>{e.contact}</td>
                             <td>{e.city}</td>
                             <td><button onClick={()=>mydel(e.id)}>delete</button></td>
+                            <td><button onClick={()=>{setfrmvisible(true),setEditdata(e)}}>Edit</button></td>
                         </tr>
                     </>})
                 }
             </tbody>
          </table>
 
+                <h1> add form </h1>
          <form onSubmit={submitform}>
             <label htmlFor="">Name</label>
             <input type="text" value={frminp.name} name="name" onChange={changeinp}/>
@@ -89,6 +99,30 @@ const Axios = () =>
 
             <input type="submit" />
          </form>
+
+                <h1>edit form</h1>
+
+         {frmvisible && (
+            <form>
+                 <label htmlFor="">Name</label>
+            <input type="text" value={editdata.name} name="name" onChange={hinput}/>
+            <br />
+
+            <label htmlFor="">Age</label>
+            <input type="text" value={editdata.age} name="age" onChange={hinput}/>
+            <br />
+
+            <label htmlFor="">contact</label>
+            <input type="text" value={editdata.contact} name="contact" onChange={hinput}/>
+            <br />
+
+            <label htmlFor="">city</label>
+            <input type="text" value={editdata.city} name="city" onChange={hinput}/>
+            <br />
+
+            <input type="submit" />
+            </form>
+         )}
         </>
     )
 }

@@ -2,12 +2,17 @@
 import React, { useState } from "react";
 import "./Signup.css";
 import { useEffect } from "react";
-
+import { useNavigate } from "react-router-dom";
 
 function Signup() {
   const [ status, setstatus ] = useState(false)
   const [ udata, setudata ] = useState(null)
   const [isRightPanelActive, setIsRightPanelActive] = useState(false);
+  let nav = useNavigate()
+  function navv(){
+    nav('/home')
+  }
+
 
   const [loginfrminput, setLogininput] = useState({
     username:"",
@@ -115,7 +120,7 @@ function Signup() {
             <br />
             <input type="password" name="password" placeholder="password" onChange={inputvaluelogin} required />
             <a href="#">Forget your Password?</a>
-            <button type="submit">Sign In</button>
+            <button onClick={navv} type="submit">Sign In</button>
           </form>
         </div>
 
