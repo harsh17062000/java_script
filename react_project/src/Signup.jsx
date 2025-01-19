@@ -52,7 +52,7 @@ function Signup() {
   if (status) 
     {
       return(
-        alert("hero")
+        alert("Sign Up Succesfull")
       )
     }
 
@@ -102,7 +102,7 @@ function Signup() {
           <form onSubmit={submitsignup}>
             <h1>Create Account</h1>
             <div className="social"></div>
-            <p>Or use your email for registration</p>
+            <p>Use your email for registration</p>
             <input type="text" value={signupfrminput.username} name="username" placeholder="username" onChange={inpvaluesignup} required />
             <input type="email" value={signupfrminput.email} name="email" placeholder="Email" onChange={inpvaluesignup} required />
             <input type="password" value={signupfrminput.password} name="password" placeholder="password" onChange={inpvaluesignup} required />
@@ -113,14 +113,15 @@ function Signup() {
         {/*----------- Sign-In Form-------------------- */}
         <div className="sign-in">
           <form onSubmit={submitlogin}>
-            <h1>Sign In</h1>
+            <h1>Login</h1>
             <div className="social"></div>
-            <p>Or use your Account</p>
+            <p>Use your Account</p>
             <input type="email" name="email" placeholder="Email" onChange={inputvaluelogin} required />
             <br />
             <input type="password" name="password" placeholder="password" onChange={inputvaluelogin} required />
             <a href="#">Forget your Password?</a>
-            <button onClick={navv} type="submit">Sign In</button>
+            <button onClick={navv} type="submit">logi
+              n</button>
           </form>
         </div>
 
@@ -131,7 +132,7 @@ function Signup() {
               <h1>Welcome Back!</h1>
               <p>To keep connected with us please login with your personal info</p>
               <button id="signin" onClick={handleSignInClick}>
-                Sign In
+                Login
               </button>
             </div>
             <div className="overlay-right">

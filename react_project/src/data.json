@@ -1,28 +1,12 @@
 {
   "Metro": [
     {
-      "id": "db2b",
-      "train": "111",
-      "date": "2025-01-01",
-      "passengers": "2",
-      "from": "mp",
-      "to": "bu"
-    },
-    {
       "id": "33ba",
       "train": "1244",
       "date": "2026-03-02",
       "passengers": "4",
       "from": "mp nagar",
       "to": "BU"
-    },
-    {
-      "id": "2dc0",
-      "train": "sedrfghbjnkml2345678",
-      "date": "",
-      "passengers": "",
-      "from": "",
-      "to": ""
     }
   ]
 }
